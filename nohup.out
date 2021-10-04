@@ -1,0 +1,41 @@
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 1: import: not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 2: import: not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 3: import: not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 4: import: not found
+from: can't read /var/mail/igraph
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 6: import: not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 7: import: not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 8: : not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 9: : not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 10: Syntax error: "(" unexpected
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 1: import: not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 2: import: not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 3: import: not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 4: import: not found
+from: can't read /var/mail/igraph
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 6: import: not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 7: import: not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 8: : not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 9: : not found
+/home/mykim/source/plotting-and-graph-analysis/community_test.py: 10: Syntax error: "(" unexpected
+/home/mykim/source/plotting-and-graph-analysis/import_test.py: 1: import: not found
+/home/mykim/source/plotting-and-graph-analysis/import_test.py: 2: Syntax error: word unexpected (expecting ")")
+hi
+Traceback (most recent call last):
+  File "community_edge_betweenness_es.py", line 13, in <module>
+    dendrogram = g.community_edge_betweenness()
+  File "/home/mykim/.local/lib/python3.8/site-packages/igraph/__init__.py", line 1417, in community_edge_betweenness
+    merges, qs = GraphBase.community_edge_betweenness(self, directed, weights)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "community_edge_betweenness_es.py", line 13, in <module>
+    dendrogram = g.community_edge_betweenness()
+  File "/home/mykim/.local/lib/python3.8/site-packages/igraph/__init__.py", line 1417, in community_edge_betweenness
+    merges, qs = GraphBase.community_edge_betweenness(self, directed, weights)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "community_edge_betweenness_es.py", line 13, in <module>
+    dendrogram = g.community_edge_betweenness()
+  File "/home/mykim/.local/lib/python3.8/site-packages/igraph/__init__.py", line 1417, in community_edge_betweenness
+    merges, qs = GraphBase.community_edge_betweenness(self, directed, weights)
+KeyboardInterrupt
