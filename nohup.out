@@ -39,3 +39,105 @@ Traceback (most recent call last):
   File "/home/mykim/.local/lib/python3.8/site-packages/igraph/__init__.py", line 1417, in community_edge_betweenness
     merges, qs = GraphBase.community_edge_betweenness(self, directed, weights)
 KeyboardInterrupt
+2021-10-12 00:25:03.205455: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-12 00:33:26.478160: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-14 13:25:18.069326: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Traceback (most recent call last):
+  File "find_optimal_topic_num.py", line 71, in <module>
+    ldamodel = gensim.models.LdaMulticore(corpus, id2word=dictionary, num_topics=ntopics, passes=5)
+NameError: name 'gensim' is not defined
+2021-10-14 13:36:00.682321: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Coherence -1.8412221287956219
+Perplexity:  -7.52362406886392 
+
+
+Coherence -1.9523670045541022
+Perplexity:  -7.617853903421117 
+
+
+Coherence -1.945127278069099
+Perplexity:  -7.706930157675254 
+
+
+Coherence -2.1510123352683705
+Perplexity:  -7.787166619199283 
+
+
+Coherence -2.2036021264971026
+Perplexity:  -7.8821302508904205 
+
+
+Coherence -2.1888136110912293
+Perplexity:  -7.977663647656807 
+
+
+Coherence -2.3025295332606674
+Perplexity:  -8.013066789990084 
+
+
+Coherence -2.4477154295266765
+Perplexity:  -8.160025508916519 
+
+
+Coherence -2.251156912130355
+Perplexity:  -8.230876187149535 
+
+
+Coherence -2.20854248266338
+Perplexity:  -8.255634082826878 
+
+
+Coherence -2.2914103434457638
+Perplexity:  -8.409460370908665 
+
+
+Coherence -2.1520841351488254
+Perplexity:  -8.424864627434399 
+
+
+Coherence -2.303114961254932
+Perplexity:  -8.587723717495974 
+
+
+Coherence -2.374741967444836
+Perplexity:  -8.710422396112875 
+
+
+Coherence -2.841546531408976
+Perplexity:  -8.801236883457378 
+
+
+Coherence -3.56819765512511
+Perplexity:  -8.90418340937099 
+
+
+Coherence -3.45106880099529
+Perplexity:  -9.008345035574184 
+
+
+Coherence -3.5691502977452463
+Perplexity:  -9.096016336791457 
+
+
+Coherence -3.2294369636291793
+Perplexity:  -9.179699929065809 
+
+
+Coherence -2.774340219140256
+Perplexity:  -9.238836680945623 
+
+
+2021-10-15 00:07:23.166870: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-15 00:09:59.024137: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-15 09:13:09.451644: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-24 23:19:35.087189: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-24 23:23:39.946199: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-24 23:33:54.233500: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 00:46:50.417314: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 11:02:12.541599: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 11:07:03.077516: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 12:58:12.572327: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 12:59:02.181069: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 20:55:50.716928: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-25 23:50:20.890030: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2021-10-26 07:00:27.904590: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
