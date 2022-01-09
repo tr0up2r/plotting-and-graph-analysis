@@ -141,3 +141,10 @@ Perplexity:  -9.238836680945623
 2021-10-25 20:55:50.716928: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
 2021-10-25 23:50:20.890030: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
 2021-10-26 07:00:27.904590: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+Traceback (most recent call last):
+  File "subreddit_analysis.py", line 15, in <module>
+    random.sample(communities, len(communities))
+NameError: name 'random' is not defined
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:11<00:00, 11.83s/it]100%|██████████| 1/1 [00:11<00:00, 11.83s/it]
+  0%|          | 0/2 [00:00<?, ?it/s]100%|██████████| 2/2 [01:00<00:00, 30.27s/it]100%|██████████| 2/2 [01:00<00:00, 30.27s/it]
+  0%|          | 0/11 [00:00<?, ?it/s]  9%|▉         | 1/11 [7:23:57<73:59:32, 26637.28s/it] 18%|█▊        | 2/11 [10:56:33<46:10:49, 18472.18s/it] 27%|██▋       | 3/11 [10:56:41<22:18:48, 10041.05s/it] 36%|███▋      | 4/11 [10:56:49<11:49:20, 6080.11s/it]  45%|████▌     | 5/11 [10:56:53<6:28:54, 3889.02s/it]  55%|█████▍    | 6/11 [10:56:55<3:33:57, 2567.43s/it] 64%|██████▎   | 7/11 [10:56:57<1:55:14, 1728.73s/it] 73%|███████▎  | 8/11 [10:57:43<59:39, 1193.03s/it]   82%|████████▏ | 9/11 [10:57:53<27:26, 823.20s/it]  91%|█████████ | 10/11 [10:58:55<09:48, 588.20s/it]100%|██████████| 11/11 [10:58:59<00:00, 409.35s/it]100%|██████████| 11/11 [10:58:59<00:00, 3594.52s/it]
