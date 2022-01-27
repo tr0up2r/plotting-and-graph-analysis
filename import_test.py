@@ -1,2 +1,0 @@
-import igraph
-print('hi')

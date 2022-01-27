@@ -4,6 +4,7 @@ connection.csv
 # exclude plots.
 *.png
 *.eps
+*.out
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
