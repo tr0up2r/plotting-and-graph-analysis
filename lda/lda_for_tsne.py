@@ -66,7 +66,7 @@ def remove_custom_stop_words(word_lists):
     return word_lists
 
 
-def save_topic_words_and_weights(table_name, community, count, remove_sw):
+def save_topic_words_and_weights(table_name, community, count, remove_sw, same_topic_num):
     sql = f'select node_id from {table_name} where community_id_fastgreedy_is = {community}'
     result_df = cn.select_query_result_to_df(sql)
     authors = np.array(result_df['node_id'].astype(str).values.tolist())
@@ -103,16 +103,23 @@ def save_topic_words_and_weights(table_name, community, count, remove_sw):
     dictionary = corpora.Dictionary(clean_corpus)
     corpus = [dictionary.doc2bow(text) for text in clean_corpus]
         
-    if count >= 10000:
-        num_topics = 10
-    elif count >= 1000:
-        num_topics = 5
-    elif count >= 100:
-        num_topics = 4
-    elif count >= 10:
-        num_topics = 3
-    else:
-        num_topics = 1
+    num_topics = 1
+    
+    if same_topic_num:
+        folder += '_same_topic_num'
+        num_words = 20
+    
+    if not same_topic_num:
+        if count >= 10000:
+            num_topics = 10
+        elif count >= 1000:
+            num_topics = 5
+        elif count >= 100:
+            num_topics = 4
+        elif count >= 10:
+            num_topics = 3
+        else:
+            num_topics = 1
      
     # 결과가 매번 다르게 나오는 것을 방지하기 위한 seed 고정.
     SOME_FIXED_SEED = 624
@@ -140,6 +147,6 @@ counts = list(np.array(result_df['count(*)'].values.tolist()))
 
 valid_communities = []
 for community, count in zip(communities, counts):
-    valid_community = save_topic_words_and_weights('nodes', community, count, True)
+    valid_community = save_topic_words_and_weights('nodes', community, count, True, True)
     if valid_community != None:
         valid_communities.append(valid_community)
