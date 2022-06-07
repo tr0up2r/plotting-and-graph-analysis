@@ -66,7 +66,7 @@ def remove_custom_stop_words(word_lists):
     return word_lists
 
 
-def save_topic_words_and_weights(table_name, community, count, remove_sw, same_topic_num):
+def save_topic_words_and_weights(table_name, community, count, remove_sw, same_topic_num, with_weight):
     sql = f'select node_id from {table_name} where community_id_fastgreedy_is = {community}'
     result_df = cn.select_query_result_to_df(sql)
     authors = np.array(result_df['node_id'].astype(str).values.tolist())
@@ -105,11 +105,13 @@ def save_topic_words_and_weights(table_name, community, count, remove_sw, same_t
         
     num_topics = 1
     
+    if with_weight:
+        folder += '_with_weight'
+    
     if same_topic_num:
         folder += '_same_topic_num'
         num_words = 20
-    
-    if not same_topic_num:
+    else:
         if count >= 10000:
             num_topics = 10
         elif count >= 1000:
@@ -136,7 +138,9 @@ def save_topic_words_and_weights(table_name, community, count, remove_sw, same_t
         words_df = pd.DataFrame(topics_words)
         weights_df = pd.DataFrame(topics_words_weights)
         words_df.to_csv(f"../lda/csv/lda_results/{table_name}/posts/{folder}_{num_words}_for_tsne/community_{community}_topics_{num_words}_words.csv", header=None, index=None)
-        # weights_df.to_csv(f"../lda/csv/lda_results/{table_name}/posts/{folder}_weights_{num_words}_for_tsne/community_{community}_topics_{num_words}_weights.csv", header=None, index=None)
+        
+        if with_weight:
+            weights_df.to_csv(f"../lda/csv/lda_results/{table_name}/posts/{folder}_weights_{num_words}_for_tsne/community_{community}_topics_{num_words}_weights.csv", header=None, index=None)
         return community
     
     
@@ -145,8 +149,5 @@ result_df = cn.select_query_result_to_df(sql)
 communities = list(np.array(result_df['community_id_fastgreedy_is'].values.tolist()))
 counts = list(np.array(result_df['count(*)'].values.tolist()))
 
-valid_communities = []
 for community, count in zip(communities, counts):
-    valid_community = save_topic_words_and_weights('nodes', community, count, True, True)
-    if valid_community != None:
-        valid_communities.append(valid_community)
+    valid_community = save_topic_words_and_weights('nodes', community, count, True, False, True)
