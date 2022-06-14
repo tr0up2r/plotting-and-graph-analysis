@@ -80,7 +80,7 @@ def yake_main(target):
         sorted_pair.append([pair[0], pair[1]])
 
     keywords_df = pd.DataFrame(sorted_pair)
-    keywords_df.to_csv(f"../extract_keywords/keywords/keywords_{target}.csv", header=None, index=None)
+    keywords_df.to_csv(f"../keywords_analysis/csv/keywords/keywords_{target}.csv", header=None, index=None)
     
     
 if __name__ == "__main__":
