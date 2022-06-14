@@ -44,30 +44,27 @@ def get_doc(table_name, author, degree):
 
 
 def yake_main(target):
-    docs_list = []
     keywords_list = []
     total_comment_count = 0
     
     if target == 'hub':
-        sql = "select distinct(body) from comments where link_key=parent_key and is_valid_author=1 and is_valid=1 and author in (select node_id from nodes where top_k_outdegree=0.1) limit 12;"    
+        sql = "select distinct(body) from comments where link_key=parent_key and is_valid_author=1 and is_valid=1 and author in (select node_id from nodes where top_k_outdegree=0.1);"    
     else:
-        sql = "select distinct(body) from comments where link_key=parent_key and is_valid_author=1 and is_valid=1 and author not in (select node_id from nodes where top_k_outdegree=0.1) limit 100;"
+        sql = "select distinct(body) from comments where link_key=parent_key and is_valid_author=1 and is_valid=1 and author not in (select node_id from nodes where top_k_outdegree=0.1);"
     result_df = cn.select_query_result_to_df(sql)
         
-    bodies = list(np.array(result_df['body'].astype(str).values.tolist()))
+    docs = list(np.array(result_df['body'].astype(str).values.tolist()))
     
     if target == 'normal':
-        bodies = bodies[:2]
-        
-    docs_list.extend(bodies)
-    print(len(docs_list))
-
-    keywords_list = extract_keywords(docs_list)
+        docs = docs[:212826]
+    
+    keywords_list = extract_keywords(docs)
    
     key_set = list(set(list(keywords_list)))
     counts = [0] * len(key_set)
 
     all_keywords = keywords_list
+    print(f'[{target}] number of comments: {len(docs)}, number of keywords: {len(all_keywords)}')
 
     for i in range(len(all_keywords)):
         for j in range(len(key_set)):
@@ -91,5 +88,5 @@ def yake_main(target):
     
     
 if __name__ == "__main__":
-    yake_main('normal')
     yake_main('hub')
+    yake_main('normal')
