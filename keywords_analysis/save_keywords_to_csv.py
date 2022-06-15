@@ -49,8 +49,21 @@ def yake_main(target):
     
     if target == 'hub':
         sql = "select distinct(body) from comments where link_key=parent_key and is_valid_author=1 and is_valid=1 and author in (select node_id from nodes where top_k_outdegree=0.1);"    
-    else:
+    elif target == 'normal':
         sql = "select distinct(body) from comments where link_key=parent_key and is_valid_author=1 and is_valid=1 and author not in (select node_id from nodes where top_k_outdegree=0.1) limit 212826;"
+    elif target == 'get_hub':
+        with open(f'../keywords_analysis/csv/keys/hub_comment_keys.csv', newline='') as f:
+            reader = csv.reader(f)
+            keys = list(reader)
+        keys = tuple(list(set(sum(keys, []))))    
+        sql = f"select body from comments where is_valid=1 and is_valid_author=1 and parent_key in {keys};"
+    else:
+        with open(f'../keywords_analysis/csv/keys/normal_comment_keys.csv', newline='') as f:
+            reader = csv.reader(f)
+            keys = list(reader)
+        keys = tuple(list(set(sum(keys, []))))    
+        sql = f"select body from comments where is_valid=1 and is_valid_author=1 and parent_key in {keys};"
+            
     result_df = cn.select_query_result_to_df(sql)
         
     docs = list(np.array(result_df['body'].astype(str).values.tolist()))
@@ -84,5 +97,7 @@ def yake_main(target):
     
     
 if __name__ == "__main__":
-    yake_main('hub')
-    yake_main('normal')
+    # yake_main('hub')
+    # yake_main('normal')
+    yake_main('get_hub')
+    yake_main('get_normal')
