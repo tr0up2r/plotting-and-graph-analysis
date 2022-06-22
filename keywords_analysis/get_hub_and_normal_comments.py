@@ -52,8 +52,6 @@ def top_keywords_main():
 def get_hub_and_normal_comments(parent_keys):
     hub_count = 0
     normal_count = 0
-    hub_keys = []
-    normal_keys = []
     
     with open(f'../keywords_analysis/csv/keywords/top_50_keywords_hub.csv', newline='') as f:
         reader = csv.reader(f)
@@ -71,8 +69,13 @@ def get_hub_and_normal_comments(parent_keys):
         normal_top_50.append(n_pair[0])
         
     keys_len = len(parent_keys)
+    
+    hub_keys_list = []
+    normal_keys_list = []
 
     for i in range(keys_len):
+        hub_keys = []
+        normal_keys = []
         sql = f"select body from comments where is_valid=1 and is_valid_author=1 and comment_key='{parent_keys[i]}'"
         result_df = cn.select_query_result_to_df(sql)
         if result_df.empty:
@@ -81,22 +84,35 @@ def get_hub_and_normal_comments(parent_keys):
         
         is_hub = False
         is_normal = False
-        for word in docs[0].split(' '):
-            if word in hub_top_50:
+        
+        hub_words = []
+        normal_words = []
+        
+        doc_words = docs[0].split(' ')
+        
+        for h_w, n_w in zip(hub_top_50, normal_top_50):
+            if h_w in doc_words:
                 is_hub = True
-            elif word in normal_top_50:
+                hub_words.append(h_w)
+            elif n_w in doc_words:
                 is_normal = True
+                normal_words.append(n_w)
             if is_hub and is_normal:
                 break
+       
+        # print(hub_words)
+        print(normal_words)
             
         if is_hub and not is_normal:
-            hub_count += 1
             hub_keys.append(parent_keys[i])
+            hub_keys.extend(hub_words)
+            hub_keys_list.append(hub_keys)
         elif is_normal and not is_hub:
-            normal_count += 1
             normal_keys.append(parent_keys[i])
+            normal_keys.extend(normal_words)
+            normal_keys_list.append(normal_keys)
         
-    return hub_keys, normal_keys
+    return hub_keys_list, normal_keys_list
 
 
 def get_comment_keys_main():
@@ -111,8 +127,8 @@ def get_comment_keys_main():
     hub_keys_df = pd.DataFrame(hub_keys)
     normal_keys_df = pd.DataFrame(normal_keys)
 
-    hub_keys_df.to_csv(f"../keywords_analysis/csv/keys/hub_comment_keys.csv", header=None, index=None)
-    normal_keys_df.to_csv(f"../keywords_analysis/csv/keys/normal_comment_keys.csv", header=None, index=None)
+    hub_keys_df.to_csv(f"../keywords_analysis/csv/keys/hub_comment_keys_and_words.csv", header=None, index=None)
+    normal_keys_df.to_csv(f"../keywords_analysis/csv/keys/normal_comment_keys_and_words.csv", header=None, index=None)
     
     
 if __name__ == "__main__":
