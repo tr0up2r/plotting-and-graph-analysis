@@ -5,6 +5,7 @@ connection.csv
 *.png
 *.eps
 *.out
+*.svg
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
